@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="flexbox">
+    <h1><%= @task.title%></h1>
+    <p class="button"><%= link_to "Edit this task", edit_task_path(@task) %></p>
+  </div>
+
+  <div class="details">
+    <p><%= @task.details %></p>
+  </div>
+
+  <div class="completed">
+    <p>This task is
+      <%=
+        if @task.completed
+          "done! :)"
+        else
+          "not done"
+        end
+      %>
+    </p>
+  </div>
+
+  <p class="button"><%= link_to "Delete",
+    task_path(@task),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %></p>
+
+  <p class="button"><%= link_to "Back to List", "/tasks" %></p>
+</div>
